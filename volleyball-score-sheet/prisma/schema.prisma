@@ -1,0 +1,69 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = "file:./dev.db"
+}
+
+model Game {
+    id        String   @id @default(uuid())
+    opponent  String
+    matchedAt DateTime @default(now())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    sets      Set[]
+}
+
+model Set {
+    id        String  @id @default(uuid())
+    no        Int     @unique
+    playerIds Json
+    Game      Game?   @relation(fields: [gameId], references: [id])
+    gameId    String?
+    points    Point[]
+}
+
+model Point {
+    id             String  @id @default(uuid())
+    score          Boolean
+    action         ACTION
+    responsePlayer String?
+    Set            Set?    @relation(fields: [setId], references: [id])
+    setId          String?
+}
+
+model RegisteredPlayer {
+    id       String   @id @unique
+    name     String   @unique
+    no       Int
+    height   Int?
+    weight   Int?
+    position POSITION
+}
+
+enum POSITION {
+    OH
+    OP
+    MB
+    S
+    L
+}
+
+enum ACTION {
+    ACE
+    KILL
+    BLOCK
+    SERVICE_NOT_IN
+    SERVICE_OUTBALL
+    SPIKE_NOT_IN
+    SPIKE_OUTBALL
+    TOUCH_OUT
+    NET_VALIDATION
+    FOOT_FAULT
+    DOUBLE_CONTACT
+    LIFT
+    CENTER_LINE_FAULT
+    POSITION_FAULT
+}
