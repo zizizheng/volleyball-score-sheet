@@ -18,32 +18,33 @@ export const usePlayerStore = defineStore<
 			return new Promise((resolve) =>
 				setTimeout(() => {
 					this.isLoading = false;
-					resolve([
+					this.players = [
 						{
 							id: '1',
-							name: 'A',
-							no: 1,
+							name: '任鋒韜',
+							no: 8,
+							position: POSITION.OH,
+							height: null,
+							weight: null,
+						},
+						{
+							id: '2',
+							name: '鄭宗霖',
+							no: 13,
 							position: POSITION.OP,
 							height: null,
 							weight: null,
 						},
 						{
-							id: '1',
-							name: 'A',
-							no: 1,
-							position: POSITION.OP,
+							id: '3',
+							name: '李爵任',
+							no: 18,
+							position: POSITION.MB,
 							height: null,
 							weight: null,
 						},
-						{
-							id: '1',
-							name: 'A',
-							no: 1,
-							position: POSITION.OP,
-							height: null,
-							weight: null,
-						},
-					]);
+					];
+					resolve(this.players);
 				}, 3000)
 			);
 		},

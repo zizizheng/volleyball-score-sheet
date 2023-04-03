@@ -1,5 +1,5 @@
 <template>
-	<div :class="$style.wrapper" v-show="false">
+	<div v-show="false" :class="$style.wrapper">
 		<!-- <div :class="$style.wrapper" v-show="loginStore.password === null"> -->
 		<img :class="$style.icon" src="toss.png" />
 		<div>
@@ -9,43 +9,41 @@
 			<ElInput v-model="input" />
 			<ElButton type="primary" @click="handleLogin">登入</ElButton>
 		</div>
-
 	</div>
-	<div :class="$style.menu" v-show="true">
+	<div v-show="true" :class="$style.menu">
 		<!-- <div v-show="loginStore.password !== null"> -->
-		<ClickBox title="隊員" router-name="/players">
+		<ClickBox title="隊員" router-name="/players" :not-ready="true">
 			<User />
 		</ClickBox>
 		<ClickBox title="歷史賽局" router-name="/games" :not-ready="true">
 			<Calendar />
 		</ClickBox>
-		<ClickBox title="建立比賽" router-name="/start" :not-ready="true">
+		<ClickBox title="建立比賽" router-name="/start">
 			<Calendar />
 		</ClickBox>
 	</div>
 </template>
 <script>
 import ClickBox from '../src/components/ClickBox.vue';
-import { useLoginStore } from "@/stores/login";
-import { User } from '@element-plus/icons-vue'
-import { Calendar } from '@element-plus/icons-vue'
-
+import { useLoginStore } from '@/stores/login';
+import { User } from '@element-plus/icons-vue';
+import { Calendar } from '@element-plus/icons-vue';
+const loginStore = useLoginStore();
 export default {
 	components: { ClickBox, User, Calendar },
-	setup: () => ({ loginStore: useLoginStore() }),
+	setup: () => ({ loginStore }),
 	data() {
 		return {
 			input: null,
 			handleLogin: () => {
-				if(this.input !== 'tossphysio') {
+				if (this.input !== 'tossphysio') {
 					alert('密碼錯誤');
 					this.input = '';
-				}
-				else loginStore.setPassword(this.input);
-			}
-		}
+				} else loginStore.setPassword(this.input);
+			},
+		};
 	},
-}
+};
 </script>
 <style module scoped>
 .wrapper {
