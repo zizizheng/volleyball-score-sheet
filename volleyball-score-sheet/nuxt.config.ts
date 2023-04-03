@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
 	app: {
 		// head
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
 	modules: [
 		// '@vueuse/nuxt',
 		// '@unocss/nuxt',
-		// '@pinia/nuxt',
+		'@pinia/nuxt',
 		'@element-plus/nuxt',
 		'@nuxtjs/color-mode'
 	],
@@ -54,7 +55,7 @@ export default defineNuxtConfig({
 		css: {
 			preprocessorOptions: {
 				scss: {
-					additionalData: `@use "@/assets/scss/element/index.scss" as element;`,
+					additionalData: `@use "./assets/scss/element/index.scss" as element;`,
 				},
 			},
 		},
@@ -63,4 +64,8 @@ export default defineNuxtConfig({
 		icon: 'ElIcon',
 		importStyle: 'scss'
 	},
+	alias: {
+		'@': 'src'
+	},
+	extensions: ['js', 'ts', 'vue'],
 })
