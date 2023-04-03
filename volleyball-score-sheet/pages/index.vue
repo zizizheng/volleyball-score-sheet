@@ -13,13 +13,13 @@
 	</div>
 	<div :class="$style.menu" v-show="true">
 		<!-- <div v-show="loginStore.password !== null"> -->
-		<ClickBox title="隊員" router-name="/members">
+		<ClickBox title="隊員" router-name="/players">
 			<User />
 		</ClickBox>
-		<ClickBox title="歷史賽局" router-name="/games" not-ready="true">
+		<ClickBox title="歷史賽局" router-name="/games" :not-ready="true">
 			<Calendar />
 		</ClickBox>
-		<ClickBox title="建立比賽" router-name="/start" not-ready="true">
+		<ClickBox title="建立比賽" router-name="/start" :not-ready="true">
 			<Calendar />
 		</ClickBox>
 	</div>
