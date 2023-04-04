@@ -38,6 +38,7 @@ import { ElTable } from 'element-plus';
 import { storeToRefs } from 'pinia';
 import { reactive, ref } from 'vue';
 
+const router = useRouter();
 const playerStore = usePlayerStore();
 playerStore.fetchPlayers();
 const { players, isLoading } = storeToRefs(playerStore);
@@ -56,6 +57,8 @@ const onSubmit = () => {
 	console.log(form);
 	console.log(tableRef.value?.getSelectionRows());
 	console.log(foreignAid);
+	// TODO: 替換成 game id
+	router.push('/set-list/1');
 };
 </script>
 

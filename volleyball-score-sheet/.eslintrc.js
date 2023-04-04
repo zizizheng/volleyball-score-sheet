@@ -10,6 +10,7 @@ module.exports = {
 		'plugin:vue/vue3-recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
+		'plugin:nuxt/recommended',
 	],
 	parser: 'vue-eslint-parser',
 	parserOptions: {

@@ -8,39 +8,49 @@ datasource db {
 }
 
 model Game {
-    id        String   @id @default(uuid())
+    id        String    @id @default(uuid())
     opponent  String
-    matchedAt DateTime @default(now())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    playerIds Json
+    matchedAt DateTime? @default(now())
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @updatedAt
     sets      Set[]
 }
 
 model Set {
-    id        String  @id @default(uuid())
-    no        Int     @unique
-    playerIds Json
-    Game      Game?   @relation(fields: [gameId], references: [id])
-    gameId    String?
-    points    Point[]
+    id            String    @id @default(uuid())
+    no            Int       @unique
+    gameId        String?
+    score         Int
+    opponentScore Int
+    createdAt     DateTime? @default(now())
+    updatedAt     DateTime? @updatedAt
+    Game          Game?     @relation(fields: [gameId], references: [id])
+    histories     History[]
 }
 
-model Point {
-    id             String  @id @default(uuid())
+model History {
+    id             String    @id @default(uuid())
     score          Boolean
     action         ACTION
     responsePlayer String?
-    Set            Set?    @relation(fields: [setId], references: [id])
+    Set            Set?      @relation(fields: [setId], references: [id])
     setId          String?
+    createdAt      DateTime? @default(now())
+    updatedAt      DateTime? @updatedAt
+
+    @@map("Point")
 }
 
 model RegisteredPlayer {
-    id       String   @id @unique
-    name     String   @unique
-    no       Int
-    height   Int?
-    weight   Int?
-    position POSITION
+    id        String   @id @unique
+    name      String   @unique
+    no        Int
+    height    Int?
+    weight    Int?
+    position  POSITION
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 enum POSITION {

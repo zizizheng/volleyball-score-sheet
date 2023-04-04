@@ -1,4 +1,4 @@
-<template >
+<template>
 	<div>
 		{{ JSON.stringify(games) }}
 	</div>
@@ -10,15 +10,13 @@ const gameStore = useGameStore();
 export default {
 	setup() {
 		gameStore.fetchGames();
-		return {}
+		return {};
 	},
 	data() {
 		return {
 			games: gameStore.games,
-		}
+		};
 	},
-}
+};
 </script>
-<style lang="">
-
-</style>
+<style lang=""></style>

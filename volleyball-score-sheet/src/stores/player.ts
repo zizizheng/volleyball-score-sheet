@@ -1,7 +1,7 @@
+import { EmptyObject } from '@/types/common';
 import { RegisteredPlayer } from '@/types/model';
 import { POSITION } from '@prisma/client';
 import { defineStore } from 'pinia';
-type EmptyObject = Record<never, never>;
 export const usePlayerStore = defineStore<
 	'player',
 	{ isLoading: boolean; players: RegisteredPlayer[] },

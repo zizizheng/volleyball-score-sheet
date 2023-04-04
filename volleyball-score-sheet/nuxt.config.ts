@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 				},
 			],
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/toss.png' }],
-		}
+		},
 	},
 
 	// css
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 		// '@unocss/nuxt',
 		'@pinia/nuxt',
 		'@element-plus/nuxt',
-		'@nuxtjs/color-mode'
+		'@nuxtjs/color-mode',
 	],
 
 	// vueuse
@@ -62,10 +62,10 @@ export default defineNuxtConfig({
 	},
 	elementPlus: {
 		icon: 'ElIcon',
-		importStyle: 'scss'
+		importStyle: 'scss',
 	},
 	alias: {
-		'@': 'src'
+		'@': 'src',
 	},
 	extensions: ['js', 'ts', 'vue'],
-})
+});
