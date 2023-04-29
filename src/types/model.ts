@@ -9,7 +9,7 @@ export interface Game extends SystemInfo {
 	/** 是否獲勝 */
 	isWin?: boolean;
 	/** 每局資料 */
-	sets: Set[];
+	sets?: Set[];
 	matchedAt: Date;
 	/** 此場比賽初賽球員，包括外援 */
 	registerPlayers: (Pick<Player, 'no'> & { isAid?: true })[];

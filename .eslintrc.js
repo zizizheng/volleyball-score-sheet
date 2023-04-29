@@ -18,6 +18,7 @@ module.exports = {
 		parser: '@typescript-eslint/parser',
 		sourceType: 'module',
 	},
+	strict: ['error', 'never'],
 	rules: {
 		'comma-dangle': 'off',
 		'vue/multi-word-component-names': 0,

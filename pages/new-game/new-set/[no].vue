@@ -2,8 +2,8 @@
 	<div class="wrapper">
 		<div class="score-container">
 			<div class="score-display">
-				<div class="score">20</div>
-				<div class="score">23</div>
+				<div class="score">{{ myScore }}</div>
+				<div class="score">{{ oppScore }}</div>
 			</div>
 			<ElTable fit size="small" empty-text="尚未開局" height="350">
 				<ElTableColumn label="我方得分" width="160" align="center">
@@ -31,58 +31,47 @@
 			<ElButton type="primary" size="large" class="score-btn">得分</ElButton>
 			<ElButton type="info" size="large" class="score-btn">失分</ElButton>
 		</div>
+		<ElDialog v-model="dialogVisible" title="Tips" width="30%" draggable>
+			<span>{{ score ? '我方' : '對方' }}得分</span>
+			<template #footer>
+				<span class="dialog-footer">
+					<ElButton>Cancel</ElButton>
+					<ElButton type="primary"> Confirm </ElButton>
+				</span>
+			</template>
+		</ElDialog>
 	</div>
 </template>
 <script lang="ts">
 import { EmptyObject } from '@/types/common';
-import { NewHistory } from '@/types/model';
+import { Point } from '@/types/model';
+import { sumBy } from 'lodash';
 
-export default defineNuxtComponent<EmptyObject, EmptyObject, { histories: NewHistory[] }>({
+export default defineNuxtComponent<
+	EmptyObject,
+	{ myScore: number; oppScore: number },
+	{ points: Point[]; dialogVisible: boolean; score?: boolean }
+>({
 	data() {
 		return {
-			histories: [
-				{
-					score: true,
-					responsePlayer: null,
-					action: ACTION.ACE,
-				},
-				{
-					score: false,
-					responsePlayer: null,
-					action: ACTION.BLOCK,
-				},
-				{
-					score: false,
-					responsePlayer: null,
-					action: ACTION.CENTER_LINE_FAULT,
-				},
-				{
-					score: true,
-					responsePlayer: null,
-					action: ACTION.KILL,
-				},
-				{
-					score: true,
-					responsePlayer: null,
-					action: ACTION.ACE,
-				},
-				{
-					score: false,
-					responsePlayer: null,
-					action: ACTION.ACE,
-				},
-				{
-					score: false,
-					responsePlayer: null,
-					action: ACTION.ACE,
-				},
-				{
-					score: true,
-					responsePlayer: null,
-					action: ACTION.ACE,
-				},
-			],
+			points: [],
+			dialogVisible: false,
+			score: undefined,
 		};
+	},
+	methods: {
+		record(score: boolean) {
+			this.dialogVisible = true;
+			this.score = score;
+		},
+	},
+	computed: {
+		myScore: function () {
+			return sumBy(this.points, (point) => (point.score ? 1 : 0));
+		},
+		oppScore: function () {
+			return sumBy(this.points, (point) => (point.score ? 0 : 1));
+		},
 	},
 });
 </script>

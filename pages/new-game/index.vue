@@ -2,7 +2,7 @@
 	<ElForm :model="form" label-position="top" class="form">
 		<h3>建立新比賽</h3>
 		<ElFormItem label="對手">
-			<ElInput v-model="form.opponent" />
+			<ElInput v-model="form.awayTeam" />
 		</ElFormItem>
 		<ElFormItem label="比賽時間">
 			<ElDatePicker v-model="form.matchedAt" type="datetime" placeholder="選擇時間" />
@@ -58,7 +58,7 @@ const onSubmit = () => {
 	console.log(tableRef.value?.getSelectionRows());
 	console.log(foreignAid);
 	// TODO: 替換成 game id
-	router.push('/set-list/1');
+	router.push('/new-game/set-list/1');
 };
 const onCancel = () => {
 	router.push('/');

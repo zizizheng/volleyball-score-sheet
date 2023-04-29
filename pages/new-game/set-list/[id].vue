@@ -14,7 +14,7 @@ export default {
 	setup() {
 		const route = useRoute();
 		return {
-			sets: gameStore.games.find((game) => game.id === route.params.id).sets,
+			sets: gameStore.games.find((game) => game.id === route.params.id)?.sets,
 		};
 	},
 	methods: {
