@@ -1,41 +1,54 @@
-export enum POSITION {
-	OH = 'OH',
-	OP = 'OP',
-	MB = 'MB',
-	S = 'S',
-	L = 'L',
-}
+import { ACTION, POSITION, VALIDATION } from '@/types/enum';
 
-export enum ACTION {
-	ACE = 'ACE',
-	KILL = 'KILL',
-	BLOCK = 'BLOCK',
-	SERVICE_NOT_IN = 'SERVICE_NOT_IN',
-	SERVICE_OUTBALL = 'SERVICE_OUTBALL',
-	SPIKE_NOT_IN = 'SPIKE_NOT_IN',
-	SPIKE_OUTBALL = 'SPIKE_OUTBALL',
-	TOUCH_OUT = 'TOUCH_OUT',
-	NET_VALIDATION = 'NET_VALIDATION',
-	FOOT_FAULT = 'FOOT_FAULT',
-	DOUBLE_CONTACT = 'DOUBLE_CONTACT',
-	LIFT = 'LIFT',
-	CENTER_LINE_FAULT = 'CENTER_LINE_FAULT',
-	POSITION_FAULT = 'POSITION_FAULT',
-}
-export interface Game {
-	id: number;
+/** 一場比賽 */
+export interface Game extends SystemInfo {
+	/** 我方隊伍名稱 */
 	homeTeam: string;
+	/** 對手隊伍名稱 */
 	awayTeam: string;
-	homeScore: number;
-	awayScore: number;
+	/** 是否獲勝 */
+	isWin?: boolean;
+	/** 每局資料 */
 	sets: Set[];
+	matchedAt: Date;
+	/** 此場比賽初賽球員，包括外援 */
+	registerPlayers: (Pick<Player, 'no'> & { isAid?: true })[];
 }
-// export interface SingleSet extends Omit<_Set, 'gameId'> {
-// 	histories: History[];
-// }
 
-// export interface Game extends _Game {
-// 	sets: SingleSet[];
-// }
+/** 每局資料 */
+export interface Set {
+	no: number;
+	homeScore?: number;
+	awayScore?: number;
+	/** 初始輪轉位置，最多 7 人 */
+	order: [number, number, number, number, number, number, number];
+	points?: Point[];
+	/** 局數時間（分） */
+	setTime?: number;
+}
 
-// export type NewHistory = Pick<History, 'score' | 'responsePlayer' | 'action'>;
+/** 比分資料 */
+export interface Point {
+	responsePlayerNo?: number;
+	result: ACTION | VALIDATION;
+	score: boolean;
+	/** 得分位置 */
+	order?: number;
+}
+
+export interface Player extends SystemInfo {
+	name: string;
+	no: number;
+	position: POSITION;
+}
+
+export interface Team extends SystemInfo {
+	name: string;
+	players: Player[];
+}
+
+export interface SystemInfo {
+	id: number;
+	createdAt?: Date;
+	updatedAt?: Date;
+}

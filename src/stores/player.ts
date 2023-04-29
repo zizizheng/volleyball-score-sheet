@@ -1,11 +1,12 @@
+import { cMockPlayers } from '@/stores/_mock';
 import { EmptyObject } from '@/types/common';
-import { RegisteredPlayer } from '@/types/model';
+import { Player } from '@/types/model';
 import { defineStore } from 'pinia';
 export const usePlayerStore = defineStore<
 	'player',
-	{ isLoading: boolean; players: RegisteredPlayer[] },
+	{ isLoading: boolean; players: Player[] },
 	EmptyObject,
-	{ fetchPlayers: () => Promise<RegisteredPlayer[]> }
+	{ fetchPlayers: () => Promise<Player[]> }
 >('player', {
 	state: () => ({
 		isLoading: false,
@@ -17,32 +18,7 @@ export const usePlayerStore = defineStore<
 			return new Promise((resolve) =>
 				setTimeout(() => {
 					this.isLoading = false;
-					this.players = [
-						{
-							id: '1',
-							name: '任鋒韜',
-							no: 8,
-							position: POSITION.OH,
-							height: null,
-							weight: null,
-						},
-						{
-							id: '2',
-							name: '鄭宗霖',
-							no: 13,
-							position: POSITION.OP,
-							height: null,
-							weight: null,
-						},
-						{
-							id: '3',
-							name: '李爵任',
-							no: 18,
-							position: POSITION.MB,
-							height: null,
-							weight: null,
-						},
-					];
+					this.players = cMockPlayers;
 					resolve(this.players);
 				}, 3000)
 			);

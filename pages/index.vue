@@ -28,7 +28,13 @@ import ClickBox from '../src/components/ClickBox.vue';
 import { useLoginStore } from '@/stores/login';
 import { User } from '@element-plus/icons-vue';
 import { Calendar } from '@element-plus/icons-vue';
+import 'dayjs/locale/zh-tw';
+import dayjs from 'dayjs';
+
+dayjs.locale('zh-tw');
+
 const loginStore = useLoginStore();
+
 export default {
 	components: { ClickBox, User, Calendar },
 	setup: () => ({ loginStore }),
