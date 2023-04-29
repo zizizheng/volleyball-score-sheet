@@ -34,7 +34,6 @@
 	</div>
 </template>
 <script lang="ts">
-import { ACTION } from '.prisma/client';
 import { EmptyObject } from '@/types/common';
 import { NewHistory } from '@/types/model';
 

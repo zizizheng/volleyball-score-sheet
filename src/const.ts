@@ -1,5 +1,3 @@
-import { ACTION } from '@prisma/client';
-
 export const cActionDisplayReference: Record<ACTION, string> = {
 	[ACTION.ACE]: '發球得分',
 	[ACTION.KILL]: '攻擊得分',

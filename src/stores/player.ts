@@ -1,6 +1,5 @@
 import { EmptyObject } from '@/types/common';
 import { RegisteredPlayer } from '@/types/model';
-import { POSITION } from '@prisma/client';
 import { defineStore } from 'pinia';
 export const usePlayerStore = defineStore<
 	'player',
