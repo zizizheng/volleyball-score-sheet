@@ -2,32 +2,34 @@
 	"name": "nuxt-app",
 	"private": true,
 	"scripts": {
-		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"dev": "nuxi dev",
+		"build": "nuxi build",
+		"preview": "nuxi preview",
+		"start": "node .output/server/index.mjs",
+		"generate": "nuxi generate"
 	},
 	"devDependencies": {
 		"@element-plus/icons-vue": "^2.1.0",
 		"@element-plus/nuxt": "^1.0.4",
 		"@nuxtjs/color-mode": "^3.2.0",
+		"@pinia/nuxt": "^0.4.9",
 		"@typescript-eslint/eslint-plugin": "^5.14.0",
 		"@typescript-eslint/parser": "^5.14.0",
-		"element-plus": "^2.3.1",
+		"@unocss/nuxt": "^0.51.2",
+		"@vueuse/nuxt": "^9.13.0",
+		"element-plus": "^2.3.3",
 		"eslint": "^8.9.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-vue": "^8.4.1",
-		"nuxt": "^3.3.2",
+		"nuxt": "3.3.3",
 		"prisma": "^4.12.0",
-		"sass": "^1.60.0",
-		"vue-eslint-parser": "^8.3.0"
+		"sass": "^1.61.0",
+		"typescript": "^5.0.4",
+		"vue-eslint-parser": "^8.3.0",
+		"vue-router": "^4.1.6"
 	},
 	"dependencies": {
-		"@pinia/nuxt": "^0.4.7",
-		"@prisma/client": "^4.12.0",
-		"dayjs": "^1.11.7",
-		"pinia": "^2.0.33"
+		"pinia": "^2.0.35"
 	}
 }

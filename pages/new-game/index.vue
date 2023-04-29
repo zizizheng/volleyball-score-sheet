@@ -25,7 +25,7 @@
 			</ElTable>
 		</ElFormItem>
 		<ElFormItem class="btn-group">
-			<ElButton>取消</ElButton>
+			<ElButton @click="onCancel">取消</ElButton>
 			<ElButton type="primary" @click="onSubmit">建立比賽</ElButton>
 		</ElFormItem>
 	</ElForm>
@@ -43,7 +43,7 @@ const playerStore = usePlayerStore();
 playerStore.fetchPlayers();
 const { players, isLoading } = storeToRefs(playerStore);
 const form = reactive<Partial<Game>>({
-	opponent: '',
+	awayTeam: '',
 	matchedAt: new Date(),
 });
 
@@ -59,6 +59,9 @@ const onSubmit = () => {
 	console.log(foreignAid);
 	// TODO: 替換成 game id
 	router.push('/set-list/1');
+};
+const onCancel = () => {
+	router.push('/');
 };
 </script>
 

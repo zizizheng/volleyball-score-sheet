@@ -18,7 +18,7 @@
 		<ClickBox title="歷史賽局" router-name="/games" :not-ready="true">
 			<Calendar />
 		</ClickBox>
-		<ClickBox title="建立比賽" router-name="/newGame">
+		<ClickBox title="建立比賽" router-name="/new-game">
 			<Calendar />
 		</ClickBox>
 	</div>
