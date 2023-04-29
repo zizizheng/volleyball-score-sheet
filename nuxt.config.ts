@@ -1,10 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 export default defineNuxtConfig({
 	app: {
 		// head
 		head: {
-			title: 'Element Plus + Nuxt 3',
+			title: 'Volley Sheet Score',
 			meta: [
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 				{
@@ -14,10 +12,9 @@ export default defineNuxtConfig({
 				},
 			],
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/toss.png' }],
-		}
+		},
 	},
 
-	// css
 	css: ['~/assets/scss/index.scss'],
 
 	typescript: {
@@ -31,26 +28,14 @@ export default defineNuxtConfig({
 		// '@unocss/nuxt',
 		'@pinia/nuxt',
 		'@element-plus/nuxt',
-		'@nuxtjs/color-mode'
+		'@nuxtjs/color-mode',
 	],
-
-	// vueuse
-	vueuse: {
-		ssrHandlers: true,
-	},
 
 	// colorMode
 	colorMode: {
 		classSuffix: '',
 	},
 
-	unocss: {
-		uno: true,
-		attributify: true,
-		icons: {
-			scale: 1.2,
-		},
-	},
 	vite: {
 		css: {
 			preprocessorOptions: {
@@ -62,10 +47,10 @@ export default defineNuxtConfig({
 	},
 	elementPlus: {
 		icon: 'ElIcon',
-		importStyle: 'scss'
-	},
-	alias: {
-		'@': 'src'
+		importStyle: 'scss',
 	},
 	extensions: ['js', 'ts', 'vue'],
-})
+	alias: {
+		'@': 'src',
+	},
+});
